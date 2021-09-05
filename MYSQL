@@ -1,0 +1,380 @@
+# Oracle Documentation and MySQL Documentations
+http://docs.oracle.com
+================================1. 12 July && 2. 13 July ============================= 
+		       
+# Database: - Collection of data is known as database. Database is a large amount of data.
+
+# DBMS: - Database Management System
+	It’s a readymade s/w that help u to manage your data.
+
+# ANSI Definition: - Collection of Program that allows you to insert, update, delete & process.
+
+# Various DBMS available: -
+	MS Excel, dBase, FoxBASE, FoxPro, advanced Revalation, database, Quattro Pro, etc.
+
+# MySQL is a Relational Database Management System.
+
+# DBMS vs RDBMS
+
+DBMS - (e.g.  MS Excel, FoxPro, etc)
+-------------------------------------
+1. Field
+2. Record
+3. File
+4. Naming convention (Nomenclature) are diff.
+5. Relationship between two file is maintained programmatically
+6. More Programming
+7. More time is required for s/w development
+8. High network traffic
+9. Processing on Client machine
+10. Slow & expensive
+11. Client-Server architecture not supported
+12. File level locking
+13. Not suitable for multi-user
+14. Distributed Database are not supported
+15. No security of data
+16. Security is not in-built feature of DBMS
+   (For security, DBMS is dependent on OS)
+
+
+RDBMS - (example- MySQL, Oracle, etc.)
+
+1. Column, Attributes, Key
+2. Row, Tuple, Entity
+3. Table, Relation, Entity
+4. Naming convention (Nomenclature) are diff.
+5. Relationship between 2 tables can be specified at the time of table creation
+6. Less programming
+7. Less time required for s/w development
+8. Low network traffic
+9. Processing on server machine
+10. Faster (in terms of network traffic) & cheaper (in terms of h/w cost, network cost, infrastructure cost)
+11. Most of the RDBMS support Client-Server architecture
+12. Row level locking (internally, table is not a file; internally, every row is a file)
+13. Suitable for multi-user
+14. Most of the RDBMS support Distributed Databases(i.e. Distributed database means for example - consider I have a bank account in Mumbai but if I visit Pune branch bank still I can access the data which is there in Mumbai branch  )
+15. Multiple levels of security
+	a. Logging in security (example - our Gmail username/password)
+	        - (MySQL username/password is needed to logon to the database)
+	b. Command level security
+	   (example - create table, create function, create procedure, create user, etc)
+	c. Object level security
+	   (To access the table of other users)
+16. Security is in-built feature of RDBMS
+           - (for security, RDBMS is not dependent on OS)
+
+
+IMP NOTE>>
+  IN DBMS - Data is stored inside a file and if someone updates 1st row in the file then the whole file becomes read-only for other users
+  IN RDBMS - internally, table is not a file; internally, every row is a file
+
+             DEPT
+   DEPTNO   DNAME    LOC
+    10      trn     mumbai
+    20      exp     delhi
+
+                   EMP
+    EMPNO     ENAME    SAL     DEPTNO
+      1      anil      5000     10
+      2      Amit      6000     20
+
+A]  Various RDBMS available:-
+1.	Informix (faster in terms of processing speed)
+
+2.	Oracle (most popular -> best s/w development tools)
+•	Product of Oracle Corporation (1977)
+•	Largest Database s/w company in the world
+•	Largest overall s/w company in the world
+•	63% of world commercial database market
+•	86% of world commercial database market in the Internet environment HIBERNATE
+•	Works on 113 Operating Software(OS)
+
+3.	Sybase
+•	Sybase Database is Declining day by day 
+•	recently acquired by SAP
+•	occupies 16% of world commercial database market
+
+
+4.	MS SQL Server
+•	good RDBMS
+•	only works with Windows OS 
+
+B]  Open-source free RDBMS:-
+1.	character based (text based):-
+2.	Ingres
+3.	Postgres
+4.	Unify
+
+5.	Db Server has to be a mainframe (super computer)
+6.	DB2 (good RDBMS from IBM) - HSBC Bank uses DB2
+
+7.	MS Access (part of MS Office)
+•	single user RDBMS
+                         -- if you want to make database (software) for medicine store or kirana shop this can be used there 
+8.	Personal Oracle
+•	single user version of Oracle RDBMS
+•	free RDBMS
+
+9.	MySQL
+•	MySQL was launched by a Swedish company in 1995
+•	Its name is a combination of  "My", the name of co-founder Michal widenius' daughter, and "SQL".
+•	MySQL is an open-source RDBMS.
+•	Most widely used open-source RDBMS. 
+-	(MySQL occupies 42% of open-source database market)
+-	(MongoDb occupies 20% of open-source database market)
+•	MySQL is a part of the widely used LAMP open-source and  web application software stack (i.e other AMP stacks)
+•	   Who Uses MySQL?
+-	free-software open-source projects that require a RDBMS often use MySQL
+•	Companies which use MySQL
+-	WordPress, Facebook, Google (but not for searches), Joomla, Twitter, Flickr,
+        YouTube, Instagram, WhatsApp, etc.
+•	Sun Microsystem acquired MySQL in 2008 and Sun Microsystem also owns Java
+•	Oracle Corporation acquired Sun Microsystem in 2010
+
+LAMP = L-Linux, A-Apache Web Server, M-MySQL, P-Perl, Python)
+WAMP = W-Windows, A-Apache Web Server, M-MySQL, P-Perl, Python)
+MAMP = M-MacOS, A-Apache Web Server, M-MySQL, P-Perl, Python)
+
+
+
+================================3. 14 July ============================= 
+
+# Best s/w development tools (make programming very easy):-
+
+SQL (SQL and MySQL are different)
+•	SQL full Form- Structure Query Language
+•	commonly pronounced as "Sequel"
+•	initially founded by IBM (1975-77) and initially known as RQBE (Relational Query by Example)
+•	IBM gave RQBE free of cost to ANSI and now controlled by ANSI (hence it is common for all RDBMS)
+•	ANSI rename RQBE to SQL in 2005 and the entire source code of SQL rewritten using Java (100%)
+•	Create, Drop, Alter, Insert, Update, Delete, Grant, Revoke, Select
+•	conform to ANSI standards
+     example: - 1 character(char) = 1 Byte, datatypes -> int = 4 Byte, float = 4 Byte, double = 8 Byte, etc.)
+•	conforms to ISO standards (for Q.A. [Quality Assurance])
+•	All commands are common for all RDBMS
+        -    create table command and other commands these all commands  are common for all i.e.        MySQL, Oracle, MS Access and etc.
+
+Products from MySQL-
+1.	MYSQL Command Line Client
+•	MySQL client s/w
+•	Used for running SQL commands, MySQL commands, MySQL - PL Programs
+•	Character based (text based) 
+•	Interface with database
+
+2.	MySQL Workbench
+•	MySQL client s/w
+•	Used for running SQL commands, MySQL commands, MySQL - PL Programs
+•	GUI based 
+•	Interface with database
+
+3.	MySQL - PL
+•	MySQL Programming Language
+•	programming language from MySQL
+•	used for data base programming
+      example - HRA_CALC, TAX_CALC, ATTENDANCE_CALC, etc.
+4.	MySQL Connectors
+5.	MySQL for excel
+6.	MySQL Notifier
+7.	MySQL Enterprise Backup
+8.	MySQL Enterprise High Availability
+9.	MySQL Enterprise Encryption
+10.	MySQL Enterprise Monitor
+11.	MySQL Query Analyzer
+
+# MySQL - SQL
+•	Structured Query Language
+•	commonly pronounced as "Sequel"
+•	common for all RDBMS(hence also known as Standard Query Language)
+•	conforms to ANSI standards and ISO standards
+
+
+There is total 16 commands  but 9 commands are for all RDBMS and rest 7 commands are for Oracle and SQL only
+As we know there are only 9 commands in SQL but they are divided into 4- Sub-Division: -
+1.	DDL (Data definition Language): - Create, Drop and Alter command
+       Create command – this command helps in creating a table. 
+                   Example = create employee (it will create a table named as employee)
+       Drop command – if want to erase or remove a table we use this command.  
+                    Example = drop employee
+       Alter command – If we want to add any column or rows in future, we can add them using this command.
+This is extra command in DDL only For MySQL: - 
+            DDL (Data definition Language): - Rename, Truncate
+                    Rename: - It will rename the file.
+                    Truncate: - It will delete and commit(save) it.
+2.	DML (Data Manipulation Language): - Insert, Update, Delete
+        Insert statement– 
+NOTE – in INSERT command “row”  is added and in ALTER command “column”  is added 
+        Update statement - 
+        Delete statement - 
+3.	DCL (Data Control Language): - Grant, Revoke
+        Grant – If we create a table then its on us if we want to share the data with other users then we will “Grant” them the permission.  
+        Revoke – If we share the data with other users but in future, we change our mind that we don’t want to share this data with other users then we will “Revoke”.
+4.	DQL (Data Query Language): - Select
+        Select Statement – If we want to see the data in our table its known as Query then we will have to write SELECT statement.
+
+This is extra only for MYSQL and Oracle: -   This 5th is not an ANSI standard
+5.	DTL/TCL (Data Transaction Language)/(Transaction Control Language) :-  Commit, Rollback,  Savepoint
+        Commit: - Suppose we insert a row it is temporary but if we want to make it permanent then we need to use commit command. Commit will save it and make the changes permanent.
+        Rollback: - Suppose we insert a row it is temporary but if we change our mind and we don’t want to save we use rollback command.  i.e you can say it is like a save and cancel.
+        Savepoint: - 
+
+
+
+Extra in Oracle RDBMS only:-
+DML (Data Manipulation Language): - Merge, Upsert
+   Merge: - It will merge the data of two tables. 
+   Upsert: - it is a combination of update and insert.
+      Example: - when you upsert a row, if a row already exists then it will update it and if the row doesn’t exist it will insert it
+
+Rules for tablenames, columnnames, variablenames:-
+1.	max 30 characters
+2.	A-Z, a-z, 0-9
+3.	It has to begin with an alphabet. 
+        Example = EMP2021, Student is valid 
+        but 2021EMP it is not valid bcz First letter is a number 
+4.	Special characters $, #, _ allowed
+5.	In MySQL, to use reserved characters such as # in tablename and columnname, then enclose it in backquotes [` `] (below esc word in keyboard)
+Example - `EMP#`
+6.	There are total 134 reserved words not allowed in tablename. Example – create, select, etc.
+
+
+
+================================4. 15th July ============================= 
+
+
+
+•	SQL provides max 4096 columns per table provide the row size <= 64,535 Bytes
+•	SQL has no limit on number of rows per table provided the table size <= 64 Terabytes
+MySQL Datatypes: -
+1. 
+A.	Char: - 
+•	char allows any character and could also be alpha-numeric as well. Ex – CDAC1, CDAC2.
+•	LIMIT – upper limit max upto 255 characters. (In ORACLE max upto 20000). 
+•	Default width is 1. i.e. char(1) by default. 
+B.	Varchar 
+•	varchar means variable character.
+•	varchar allows any character and could also be alpha-numeric as well. Ex – CDAC1, CDAC2
+•	LIMIT- upper limit max upto 65,535 characters i.e  64 kb – 1.
+•	No default width, and width need to be specified. i.e varchar(5), varchar(7), etc.
+C.	Text: -   
+•	Text has a variable length.
+•	Text allows any character and could also be alpha-numeric as well. Ex – CDAC1, CDAC2.
+•	LIMIT- upper limit max upto 65,535 characters i.e., 64 kb – 1.
+•	No default width, and width need to be specified.
+D.	Tinytext: -
+•	Tinytext allows any character and could also be alpha-numeric as well. Ex – CDAC1, CDAC2.
+•	LIMIT- upper limit max  upto 255 characters.
+•	No default width, and width need to be specified.
+E.	Mediumtext: - 
+•	Mediumtext  allows any character and could also be alpha-numeric as well. Ex – CDAC1, CDAC2.
+•	LIMIT- upper limit max upto 16,777,215 characters i.e 16 Mb – 1.
+•	No default width, and width need to be specified.
+F.	Longtext: -
+•	Longtext allows any character and could also be alpha-numeric as well. Ex – CDAC1, CDAC2.
+•	LIMIT- upper limit max upto 4,294,967,295 characters i.e 4 Gb -1.
+•	No default width, and width need to be specified.
+•	stored outside the row and stored outside the table.
+•	MySQL maintains a LOCATOR (hard disk pointer) (stores address) from the table row to the Text data and the benefit is that the processing speed of other columns in the table is not affected.
+•	used for those columns are use for storage and display purposes and used for those columns that will not be used for searching.
+•	Ex: -  REMARKS, COOMENTS, FEEDBACK, EXPERIENCE, RESUME, etc.
+
+============================
+
+Difference between char and varchar
+char	varchar
+1.	Char has fixed length.	1.	Varchar has variable length.
+2.	Char is wastage of Hard disk space. As if we declare ENAME char(20) and write AMIT it is only 4 Byte but char will occupy all 20 Byte and rest 16 Byte will be blank Spaces.	2.  Varchar converse on HD space
+3.	Searching & Retrieval will be very fast.	3. Searching and Retrieval will be slow.
+4.	Ex - PANNO, AADHARCARDNO, etc.	4. Ex - ADDRESS, CITY
+
+============================
+
+G.	Binary: - (0, 1)
+•	Fixed length binary string.
+•	LIMIT- upper limit max 255 Bytes of binary data.
+•	Ex: - small images, BARCODES, PICTURE_CODES, QR_CODES, SIGNATURES, FINGERPRINTS, etc.
+•	No default width, and width need to be specified.
+•	Internally they are stored as character strings of 1's and 0's.
+H.	Varbinary: - (0,1)
+•	Variable length binary string.
+•	LIMIT- upper limit max 65,535 Bytes of binary data i.e  64 kb – 1.
+•	Ex: - EMOTICONS, SMILEYS, COMPANY_LOGO, etc.
+•	No default width, and width need to be specified.
+•	Internally they are stored as character strings of 1's and 0's
+
+2. BLOB ->
+•	FULLFORM - Binary Large Object
+1.	Tinyblob: - 
+•	LIMIT- upper limit max upto 255 bytes of binary data
+2.	Blob: - 
+•	LIMIT- upper limit max upto 65,535 bytes of binary data
+3.	Mediumblob: - 
+•	LIMIT- upper limit max upto 16,777,215 bytes of binary data
+4.	Longblob: - 
+•	LIMIT- upper limit max upto 4,294,967,295 bytes of binary data
+
+*	all of the above are stored outside the row
+*	all of the above are stored outside the table
+*	MySQL maintains a LOCATOR from the table row to the the Blob data
+*	used for columns that will be focused on storage and display purposes
+*	not used for that columns that will be used for searching
+*	e.g PHOTOGRAPHS, CHARTS, GRAPHS, MAPS, SOUND, MUSIC, VIDEOS, etc.
+*	Blob is the multimedia datatype of MySQL
+*	width does not have specified in all of the above datatypes
+
+
+3. Integer types (Exact value): -
+•	Signed or Unsigned (by default it is signed).
+A.	Tinyint: - 
+•	Tinyint uses space of 1 Byte.
+•	It ranges from -128 to 127 and  0 to 255.
+•	Ex: -  AGE int unsigned
+B.	Smallint: - 
+•	Smallint uses space of 2 Bytes.
+C.	Mediumint: - 
+•	Mediumint uses space of 3 Bytes.
+D.	Int: - 
+•	Int uses space of 4 Bytes.
+E.	Bigint: - 
+•	Bigint uses space of 8 Bytes.
+============================================================================
+4. Floating-Point Types (Approximate Value): -
+A.	Float 
+•	Float uses space upto 7 decimals.
+B.	Double: - 
+•	Double uses space upto 15 decimals.
+===============================================================================
+
+5. Fixed-point types (Exact value):-
+Decimal: - 
+•	stores double as a string. Ex: - "653.7"
+•	maximum number of digits is 65.
+•	Decimal is used when it is important to preserve the exact precision, for example with monetary data.
+6. Boolean (logical datatypes): - 
+•	logical datatypes.
+•	Boolean returns True or False and evaluate  1 for True and 0 for False.
+•	Ex: - MARITAL_STATUS Boolean and can insert true, false 1 or 0 and output will always be  displayed in 1 or 0.
+=====================================================================================
+7. Date & Time Datatypes: -
+Default Date format Date: -
+•	'YYYY-MM-DD’ - Example: - '2021-07-15' 
+•	Date can range from '1000-01-01' to '9999-12-31' (specifying all 4 digits of year is optional)
+•	year values in the range 70-99 are converted to 1970-1999
+•	year values in the range 00-69 are converted to 2000-2069
+•	date1 - date2 returns number of days between the 2 dates. 
+•	Internally date is stored as a number and it occupies 7 Bytes of storage
+•	e.g. '2021-07-15' - '2021-07-12' then number of days = 3
+        ‘1000-01-01' -> 1
+        '1000-01-02' -> 2
+		'2021-07-15' -> 2147398 (number of days since '1000-01-01')
+
+A.	Time ('HH:MM:SS') or ('HHH:MM:SS'); -
+•	time values may range from '-838:59:59 to '838:59:59'
+B.	Datetime ('YYYY-MM-DD and hh:mm:ss'): - 
+•	'100-01-01 00:00:00' to '9999-12-31 23:59:59' range
+C.	Year (YYYY): -
+•	(1901-2155)
+
+
+================================5.  16th July ============================= 
+
+
