@@ -1,0 +1,225 @@
+08/08/2021
+-----------
+  Oracle -SQL- 
+
+	1.	PseudoColumns:-
+	•	   Fake columns (Virtual columns) 
+	•	   It's not a column of a table,but you can use it in SELECT     statement.
+E.g.
+1)  Computed columns - this are never saved in tables.
+   Ex : - (ANNUAL= sal*12)
+2)  Expressions -  
+   Ex : - (NET_EARNINGS =sal+comm) ->2 or more columns involved 
+3)  Function-based columns 
+   Ex : - (COMPANY_TOTAL= sum(sal)) - sum(sal) will give company total, so we see we don’t need this column in our table.
+
+Oracle supplied PseudoColumns:-
+
+RDBMS supplied Pseudo columns: -
+
+select ename,sal from emp;
+
+	1.	ROWNUM -> returns the row number---
+    EXAMPLES: -
+	•	select rownum, ename ,sal from emp;
+	•	select rownum, ename, sal from emp where rownum = 1;  - it will show only whose rownum is 1
+	•	select rownum, ename, sal from emp where rownum < 4; -  it will show only whose rownum is less than 4
+	•	select rownum, ename, sal from emp where rownum = 4;  ----->it will give OUTPUT as no rownum bcz when rownum = 1 will enter it will not consider and ignore it and next rownum i.e rownum = 2 will enter and it will consider it 1 so again it will ignore so bcz of this it will show no rownum
+	•	select rownum, ename, sal from emp where rownum > 4; ------> it will give OUTPUT as no rownum bcz SAME REASON AS ABOVE
+
+select rownum,ename,sal from emp;
+
+IF WE USE ROWNUM WITH ORDERBY(orderby clause does sorting and sorting takes place in last): -
+
+     select rownum, ename, sal from emp order by ename;
+          - this will not be I proper order bcz orderby clause does sorting and sorting takes place in last.
+
+select rowname, ename, sal from
+(select ename, sal from emp order by ename); - THIS IS A SUB-QUERY (it will execute first)
+
+INLINE VIEW
+      - If you use sub-query in the FROM clause,it is known as INLINE VIEW.
+    EXAMPLE: -
+select rowname, ename, sal from
+(select ename, sal from emp order by ename); - THIS IS A SUB-QUERY (it will execute first)
+
+	1.	ROW ID: - 
+
+	•	* Rowid stands for Row Identifier. 
+	•	* ROWID is the row address.
+	•	* It is a address of the row in the DB server HD
+	•	* (actual physical memory location where that row is stored)
+	•	* Fixed length encrypted string of 18 characters
+	•	* When you SELECT from a table, the order of rows in the output will be in ascending order of row address
+	•	* When you SELECT from a ta ble, the order of rows in the output will be in ascending order of ROWID.
+	•	* No two rows of any table in the entire DB can have same ROWID
+	•	* ROWID works as unique identifier for every row in the DB
+	•	* When you UPDATE a row,if the row length increasesthe ROWID may   change.
+	•	* You can use ROWID to UPDATE or DELETE the duplicate rows.---VIMP...
+	•	* Rowid is used internally by Oracle to distinguish between 2 rows in   the database.
+
+select rowid, ename,sal from emp;
+
+delete from emp where rowid='AAASSmAABAAAcG5AAA';
+
+ROWID is used internally by the RDBMS: -(ORACLE)
+
+	1.	To distinguish between 2 rows in the DB
+	2.	For row locking
+	3.	To manage the INDEXES
+	4.	To manage the CURSORS
+	5.	Row management
+
+	▪	ROWID  and ROWNUM is present in Oracle and you can view it.
+	▪	ROWID is present in MySQL but you cannot view it.
+	▪	ROWNUM is not present in MySQL.
+
+ALTER table: - (DDL command)
+	•	Rename a table
+	•	Add, drop a column to the table
+	•	Increase width of column
+
+INDIRECTLY: -
+	•	Reduce width of column
+	•	Change datatype of column
+	•	Copy rows from one table into another table
+	•	Copy a Table
+	•	Copy Structure of Table
+	•	Rename a Column
+	•	Change Order of column in Table Structure [bcz of NULL VALUE as NULL value will take 1 BYTE and if we put column which has more no. of NULL value at end of the table it won’t occupy the space]
+
+        
+           EMP TABLE
+empno ename sal
+------ ------ -----
+101 Scott 5000
+102 King 6000
+
+1. To Rename a Table
+   QUERY: -  rename table emp to employees;         - BUT don’t use this QUERY
+
+2. To add a Column
+    QUERY: - alter table emp add get float;
+
+3. Drop a Column
+    QUERY: - alter table emp drop column sal;
+
+4. Increase Width of the Column
+    QUERY: - alter table emp modify ename varchar(30);
+
+5. Reduce width of the column
+ If we reduce the width of the table then the data will get TRUNCATED in MYSQL and ORACLE don’t allow reduction of width
+    To reduce width we can do it INDIRECTLY: - [we can add another row and copy the data to that row]
+QUERY: -
+             alter table emp add x varchar(25);
+             update emp set x = ename, ename = null;
+             alter table emp modify ename varchar2(20);
+        
+      /* Data testing on x column */
+      update emp set ename = x;
+      alter table emp drop column x;
+      insert into emp select * from emp2;
+
+6. Change the Datatype of Column
+QUERY: -
+             alter table emp add x int;
+             update emp set x = empno, empno = null;
+             alter table emp modify empno char(4);
+        
+      /* Data testing on x column */
+      update emp set empno = x;
+      alter table emp drop column x;
+      insert into emp select * from emp2;
+
+TO copy specific rows only:-
+
+insert into emp select * from emp2 where .......;
+
+7. Copy a table (for testing purposes we copy Table)
+QUERY: -  using Sub-query with create table [without using brackets]
+          create table emp_copy      -it will copy structure, rows, columns
+          as
+          select * from emp;
+                 This command works in 2 steps
+                   Step 1 it will create a table
+                   Step 2 it will select STATEMENT is executed 
+                   OUTPUT won’t be shown on Screen it will be added to the table(emp_copy [table which we are creating])
+
+8.To copy only specific columns/rows:-
+QUERY: -
+              create table emp_copy
+              as
+              select empno,sal from emp where......;
+
+9.Copy structure of table (not rows)
+QUERY: -
+Method 1: -
+         create table emp_struct as select * from emp;      - Copying the table
+         delete from emp_struct;                                         - Deleting the table
+         commit;
+
+Method 2: -
+         create table emp_struct as select * from emp;
+         truncate table emp_struct;                                    - will DELETE all the rows and  COMMIT ALSO
+
+Method 3: -
+         create table emp_struct as
+         select * from emp where 1 = 2; -> give an impossible[here 1 = 2 is the impossible condition] WHERE clause so that no row will get copied
+
+10. Rename a column
+QUERY: -
+        create table emp2 as
+        select ename, sal, empno from emp;
+        
+        drop table emp;
+
+        rename table emp_copy to emp; -> In MySQL.   
+                OR
+        rename emp_copy to emp; -> In Oracle
+
+Change position of columns in table structure
+(because of null values, for storage conditions/consideration)
+
+
+
+Difference between DELETE and TRUNCATE: -
+
+            DELETE                                                         TRUNCATE
+   1. DML command                                                DDL command 
+               
+   2. Requires COMMIT                                           Auto COMMIT
+
+   3. ROLLBACK possible                                        ROLLBACK not possible
+
+   4. Can use WHERE clause with DELETE           Cannot use WHERE clause with  TRUNCATE
+
+   5. Free space is not deallocated                          Free space is deallocated
+
+   6. When you delete the rows delete                     When you truncate a table delete
+       triggers on table will                                          tables on triggers will not
+        execute.                                                           execute.
+
+   7. you can specify WHERE clause                      You cannot specify WHERE clause (truncate will delete all the rows a DELETE        
+                                                                                 speicific rows only   committ).
+
+   8. Free space is not deallocated                           free space is  deallocated.
+
+   9. Delete Triggers written on table.                       Delete Triggers written on table will not execute 
+    will execute	    
+
+
+       Emp
+EMPNO ENAME   SAL
+101   SCOTT   5000
+102   KING    6000
+
+      EMP2
+EMPNO ENAME   SAL
+103  TANUJA   3000
+104  MAHESH   4000
+105  SARIKA   5000
+
+      EMP_COPY
+EMPNO  ENAME   SAL
+101     SCOTT  5000
+102     KING   6000
